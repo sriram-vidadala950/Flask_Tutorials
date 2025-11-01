@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            overflow-x: hidden;
+            background: linear-gradient(45deg,lightcyan,lightblue,lightcyan);
+            background-size: 1000% 1000%;
+            animation: bodyGradient 15s linear infinite;
+        }
+        @keyframes bodyGradient{
+            0%{ background-position: 0% 50%;}
+            50%{ background-position: 100% 50%;}
+            100%{ background-position: 50% 0%;}
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .container h1 {
+            font-size: 10em;
+            font-weight: bolder;
+            background: linear-gradient(180deg, #FF5722, yellow);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -4px;
+        }
+        .container p{
+            font-size: 5em;
+            margin-top: -1em;
+            color: whitesmoke;
+            text-shadow: 0 0 10px lightblue;
+        }
+        .nresponse{
+            text-decoration: none;
+            position: relative;
+            font-size: 2em;
+            color: whitesmoke;
+            text-shadow: 0 0 10px lightblue;
+        }
+        .nresponse::after{
+            content: '';
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background: orangered;
+            bottom: -2px;
+            left: 0;
+            transform: scale(0);
+            transition: 0.4s ease-in-out;
+        }
+        .nresponse:hover::after{
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome {{name}}!!</h1>
+        <p>You are working in a great oraganisation like {{company}}</p>
+        <p>You are great {{role}}</p>
+        <p>You are really {{character}}</p>
+        <p>Thankyou for visiting...</p>
+        <a href="{{url_for('logout')}}" class="nresponse">New Response</a>
+    </div>
+</body>
+</html>
+
+

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Marks</title>
+    <style>
+        body {
+            margin: 0;
+            background: linear-gradient(270deg, #000, #202020, #000);
+            background-size: 1000% 1000%;
+            animation: bodyGradient 15s ease-in-out infinite;
+            color: white;
+            overflow-x: hidden;
+        }
+
+        @keyframes bodyGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .outer-container {
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        .outer-container h1 {
+            font-size: 6em;
+            color: whitesmoke;
+            text-shadow: 0 0 15px #ffffffcc;
+            margin-bottom: 5%;
+        }
+
+        .table-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 60%;
+            background-color: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(50px);
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            overflow: hidden;
+        }
+
+        th, td {
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1em;
+            text-align: center;
+        }
+
+        th {
+            background-color: rgba(255, 255, 255, 0.19);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        tr:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transition: background-color 0.3s ease;
+        }
+        .new-response-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 5%;
+        }
+        .new-response{
+            text-decoration: none;
+            color: wheat;
+            font-size: 1em;
+            font-weight: bold;
+            position: relative;
+        }
+        .new-response::after{
+            content: "";
+            position: absolute;
+            height: 1px;
+            width: 100%;
+            background-color: gray;
+            bottom: -2px;
+            left: 0px;
+            transition: 0.3s ease-in-out;
+            transform: scale(0);
+        }
+        .new-response:hover::after{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <h1>Welcome {{ name }}!!</h1>
+    </div>
+    <div class="table-wrapper">
+        <table>
+            <tr>
+                <th>Subject</th>
+                <th>Marks</th>
+            </tr>
+            {% for subject, marks in subjects.items() %}
+            <tr>
+                <td>{{ subject }}</td>
+                <td>{{ marks }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    <div class="new-response-container">
+        <a href="{{url_for('DisplayForm')}}" class="new-response">New Response</a>
+    </div>
+</body>
+</html>

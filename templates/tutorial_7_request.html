@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=,initial-scale=1.0">
+    <title>Request</title>
+    <style>
+        body{
+            overflow-x: hidden;
+            background: linear-gradient(270deg, black, #202020, #000000, #000);
+            background-size: 1000% 1000%;
+            animation: bodyGradient 15s ease-in-out infinite;
+            
+        }
+        @keyframes bodyGradient{
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 100% 50%;
+            }
+            100%{
+                background-position: 0% 50%;
+            }
+        }
+        .form-container{
+            position: relative;
+             background-size: 1000% 1000%;
+            background: rgba(255, 255, 255, 0.19);  
+            backdrop-filter: blur(50px);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 1% auto;
+            height: 35em;
+            width: 20em;
+            border-radius: 1em;
+            padding: 1.5em;
+            box-shadow: 0 0 10px gainsboro;
+            animation: bodyGradient 1s linear infinite;
+        }
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 0.1em;
+        }
+        form p, label{
+            font-weight: bold;
+            display: block;
+            color: gray;
+        }
+         .submit {
+            margin-top: 1.2em;
+            height: 2.5em;
+            background: linear-gradient(45deg, gray, gray, gray);
+            border-radius: 1.5em;
+            border: none;
+            color: #222;
+            font-weight: bold;
+            letter-spacing: 1px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255,255,255,0.3);
+            transition: all 0.3s ease-in-out;
+        }
+
+        .submit:hover {
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(255,255,255,0.5);
+        }
+        input[type="text"], input[type="number"]{
+            background: transparent;
+            border: none;
+            border-bottom: 2px solid gray;
+            outline: none;
+            padding: 0.4em, 0.2em;
+            font-size: 1em;
+            margin-top: 3%;
+            font-weight: bold;
+        }
+        .heading{
+            display: flex;
+            justify-content: center;
+            color: white;
+            font-size: 6em;
+            text-shadow: 0 0 10px white;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="heading">Enter Your Marks</h1>     
+    <div class="form-container">
+        <form action="/login" method="post">
+            <label for="Name">Name: </label>
+            <input type="text" name="nm"><br>
+            <label for="Roll_Number">Roll Number: </label>
+            <input type="number" ><br>
+           <hr>
+            <label for="maths">Mathematics: </label>
+            <input type="number" name="maths"><br>
+            <label for="physics">Physics: </label>
+            <input type="number" name="phy"><br>
+            <label for="biology">Biology: </label>
+            <input type="number" name="bio"><br>
+            <label for="chemisty">Chemisty</label>
+            <input type="number" name="chy"><br>
+            <label for="social">Social Studies: </label>
+            <input type="number" name="ss">
+            <button class="submit">submit</button>
+        </form>
+    </div>
+</body>
+</html>

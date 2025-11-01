@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FW_2</title>
+    <style>
+        body{
+            margin: 0%;
+            background: linear-gradient(270deg, black, rgb(29, 27, 27), black );
+            background-size: 600% 600%;
+            animation: gradientShift 10s ease-in-out infinite;
+        }
+        @keyframes gradientShift {
+            0%{ background-position: 0% 50%;}
+            50%{ background-position: 100% 50%;}
+            100%{ background-position: 0% 50%;}
+        }
+        a{
+            text-decoration: none;
+            color: aliceblue;
+        }
+        .outer-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .inner-container{
+            color: whitesmoke;
+            font-weight: bolder;
+            font-size: 5em;
+            text-shadow: 0px 0px 10px whitesmoke;
+        }
+        .content{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: wheat;
+        }
+        .home{
+            position: relative;
+        }
+        .home::after{
+            position: absolute;
+            content: '';
+            background-color: yellow;
+            height: 2px;
+            width: 110%;
+            bottom: -5px;
+            left: -0.3em;
+            transition: 0.3s ease-in-out;
+            transform: scale(0);
+        }
+        .home:hover::after{
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="inner-container">
+            <h1> Hello {{name}}👋</h1>
+        </div>
+    </div>
+    <div class="content">
+        <h1>Hello again from a static page!</h1>
+        <p>This page is served from the /static/ folder.</p>
+        <a href="{{url_for('SayHello',name=name)}}" class="home">Back to home</a>
+    </div>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+</body>
+</html>
