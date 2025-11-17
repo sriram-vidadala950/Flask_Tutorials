@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transparent Input UI</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            overflow-x: hidden;
+            background: linear-gradient(145deg, rgb(40, 39, 39), #242323, rgb(39, 38, 38), #2d2c2c);
+            background-size: 1000% 1000%;
+            animation: background_animations 15s ease-in-out infinite;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        @keyframes background_animations{
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 50% 100%;
+            }
+            100%{
+                background-position: 0% 50%;
+            }
+        }
+
+        .outer-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            width: 100%;
+        }
+
+        .inner-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+        .inner-container h1 {
+            color: #c0bbbb;
+            margin: 1em;
+            font-size: 3em;
+            text-shadow: 2px 2px 5px #999;
+        }
+
+        /* FIX: Arrange form elements vertically */
+        .inner-container form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .inner-container form input[type='text']{
+            background: rgb(43, 41, 41);
+            width: 50em;
+            max-width: 90vw;
+            height: 5em;
+            border-radius: 1em;
+            border: 2px solid #555;
+            padding: 0 1em;
+            color: white;
+            font-size: 2em;
+        }
+
+        .inner-container form input[type='text']::placeholder{
+            color: #999;
+            font-size: 1.2em;
+        }
+
+        .inner-container form input[type='text']:focus{
+            outline: none;
+            border-color: grey;
+            box-shadow: 0 0 10px grey;
+            transition: 0.3s ease;
+        }
+
+        .submit-btn{
+            position: relative;
+            text-decoration: none;
+            margin-top: 1.5em;
+            font-size: 1.5em;
+            color: grey;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+        }
+
+        .submit-btn::after{
+            position: absolute;
+            content: "";
+            background-color: #555;
+            height: 2%;
+            width: 100%;
+            bottom: 0;
+            left: 0;
+            transition: 0.3s ease-in-out;
+            transform: scale(0);
+        }
+
+        .submit-btn:hover::after{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="inner-container">
+            <h1>Enter Your Name</h1>
+
+            <form action="{{ url_for('login') }}" method="post">
+                <input type="text" id="username" name="username" placeholder="Username" required>
+                <button type="submit" class="submit-btn">Submit</button>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

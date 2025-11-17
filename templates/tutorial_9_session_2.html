@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow-x: hidden;
+            background: linear-gradient(270deg, rgb(21, 21, 21), rgb(72, 70, 70), rgb(32, 30, 30));
+            background-size: 1000% 1000%;
+            animation: background_animation 15s ease-in-out infinite;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        @keyframes background_animation{
+            0%{
+                background-position: 0% 50%;
+            }
+            50%{
+                background-position: 50% 100%;
+            }
+            100%{
+                background-position: 0% 100%;
+            }
+        }
+        h1{
+            font-size: 5em;
+            color: wheat;
+            text-shadow: 0 0 5px white;
+        }
+        .outer-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 75vh;
+            width: 100%;
+        }
+        .inner-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        .ptext{
+            height: auto;
+            width: 75%;
+            margin-top: 2%;
+            color: white;
+            font-size: 1.2em;
+        }
+        .backbtn{
+            position: relative;
+            text-decoration: none;
+            color: wheat;
+            font-size: 2.5em;
+            cursor: pointer;
+            margin-top: 1.5rem;
+        }
+        .backbtn::after{
+            position: absolute;
+            content: "";
+            background-color: #555;
+            width: 100%;
+            height: 5%;
+            bottom: 0;
+            left: 0;
+            transition: 1s ease-in-out;
+            transform: scale(0);
+        }
+        .backbtn:hover::after{
+            transform: scale(1.3);
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="inner-container">
+            <h1>Welcome {{ name }}!!</h1>
+            <p class="ptext">
+                A truly admirable individual, they lead with humility and compassion. 
+                Their dedication to helping others and improving themselves makes them stand out. 
+                They show that greatness is not about power, but about how deeply you care for the people around you.
+            </p>
+            <!-- Go back to the login (home) page -->
+            <a class="backbtn" href="{{ url_for('logout') }}">Login</a>
+        </div>
+    </div>
+</body>
+</html>
