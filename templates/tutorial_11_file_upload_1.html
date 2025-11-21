@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow-x: hidden;
+            background: linear-gradient(315deg, rgba(0, 0, 255, 0.505), rgba(0, 0, 255, 0.276), rgba(0, 0, 255, 0.505));
+            background-size: 1000% 1000%;
+            animation: background-animation 20s ease-in-out infinite;
+        }
+        @keyframes background-animation{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 50% 100%;}
+            100%{background-position: 0% 50%;}
+        }
+        .outer-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .inner-container h1{
+            color: #fff;
+            text-shadow: 0 0 10px grey;
+            margin: 0em 0 0.5em 0;
+        }
+        .inner-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem 2.5rem;
+
+            border: 1px solid rgba(19, 48, 195, 0.201);
+            border-radius: 2em;
+            background: rgba(25, 49, 185, 0.185);
+            backdrop-filter: blur(20px);
+            --webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.35)
+        }
+        label{
+            font-size: 1.5em;
+            color: white;
+        }
+        form input[type='file'], input[type='submit']{
+            width: 100%;
+            background: transparent;
+            color: ghostwhite;
+
+            outline: none;
+            border: none;
+            
+            padding: 0.6rem 0.1rem;
+            font-size: 0.95rem;
+            transition: border-color 0.2s ease, transform 0.1s ease;
+            
+        }
+        form input[type='text']{
+            width: 100%;
+            background: transparent;
+            color: white;
+
+            outline: none;
+            border: none;
+
+            border-bottom: 2px solid rgb(255, 255, 255);
+            padding: 0.5em 0.4em;
+        }
+        form input::placeholder{
+            color: rgba(255, 255, 255, 0.651);
+        }
+        .submit-btn{
+            margin: 1em 0.1em;
+            width: 100%;
+            border: none;
+            outline: none;
+
+            padding: 0.5em 0.4em;
+            border-radius: 62.4em;
+            font-weight: 600;
+            font-size: 0.98rem;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+
+            color: gray;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            transform: translateY(-2px);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+        .submit-btn:active{
+            transform: translateY(0);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+        .submit-btn:hover{
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4)
+        }
+        .inner-container p{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="inner-container">
+            <h1>File Upload Tutorial</h1>
+            {% if error %}
+            <p><strong>{{error}}</strong></p>
+            {% endif %}
+            <form action="{{ url_for('uploader') }}" method="post" enctype="multipart/form-data">
+                <label for="username">Username</label>
+                <input type="text" name="username" placeholder="username">
+                <input type="file" name="file" placeholder="upload file">
+                <button class="submit-btn">submit</button>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

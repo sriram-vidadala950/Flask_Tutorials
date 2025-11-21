@@ -51,10 +51,16 @@
         .a-home:hover::after{
             transform: scale(1.2);
         }
+        .h-welcome{
+            font-size: 5em;
+            text-shadow: 0 0 5px wheat;
+            margin: 0.5em;
+        }
     </style>
 </head>
 <body>
     <div class="container">
+        <h1 class="h-welcome">Welcome {{name}}</h1>
         {% with messages = get_flashed_messages() %}
         {% if messages %}
         <ul>

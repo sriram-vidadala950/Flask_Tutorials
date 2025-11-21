@@ -15,12 +15,13 @@ def login():
         else:
             flash("You were successfully logged in..")
             flash('Logout before login again..')
-            return redirect(url_for('welcome'))
+            name = request.form.get('name')
+            return redirect(url_for('welcome',name=name))
     return render_template('tutorial_10_flash_message_1.html', error=error)
 
-@app.route('/welcome')
-def welcome():
-    return render_template('tutorial_10_flash_message_3.html')
+@app.route('/welcome/<name>')
+def welcome(name):
+    return render_template('tutorial_10_flash_message_3.html',name = name)
 
 if __name__ == "__main__":
     app.run(debug=True)

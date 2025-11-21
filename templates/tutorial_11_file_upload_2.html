@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            overflow-x: hidden;
+            background: linear-gradient(315deg, rgba(0, 0, 255, 0.505), rgba(0, 0, 255, 0.276), rgba(0, 0, 255, 0.505));
+            background-size: 1000% 1000%;
+            animation: background-animation 20s ease-in-out infinite;
+        }
+        @keyframes background-animation{
+            0%{background-position: 0% 50%;}
+            50%{background-position: 50% 100%;}
+            100%{background-position: 0% 50%;}
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            color: rgba(245, 222, 179, 0.683);
+        }
+        .container h1{
+            text-shadow: 0 0 10px gray;
+            font-size: 5em;
+            margin: 0 0 0.5em 0;
+        }
+        .container a{
+            text-decoration: none;
+            color: antiquewhite;
+        }
+        .p-home{
+            margin: 2em;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome {{username}}</h1>
+        {%with messages = get_flashed_messages() %}
+        {%if messages%}
+        <ul>
+            {% for message in messages%}
+            <li>
+                {{message}}
+            </li>
+            {%endfor%}
+        </ul>
+        {%endif%}
+        {%endwith%}
+
+        <p class="p-home">
+            Click here to 
+            <a href="{{url_for('home')}}">Home?</a>
+        </p>
+    </div>
+</body>
+</html>
