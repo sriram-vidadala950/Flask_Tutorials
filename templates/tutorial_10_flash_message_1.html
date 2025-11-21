@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Glass Login</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            overflow-x: hidden;
+            color: #fff;
+            background: linear-gradient(315deg, black, gray, black);
+            background-size: 400% 400%;
+            animation: background_animation 20s linear infinite;
+        }
+
+        @keyframes background_animation{
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .outer-container{
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 1rem;
+        }
+
+        .inner-container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: stretch;
+
+            width: 100%;
+            max-width: 400px;
+            padding: 2rem 2.5rem;
+
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            border-radius: 1.75rem;
+            background: rgba(255, 255, 255, 0.14);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.35);
+        }
+
+        .title {
+            text-align: center;
+            font-size: 1.7rem;
+            font-weight: 600;
+            margin-bottom: 0.25rem;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-bottom: 1.8rem;
+        }
+
+        form{
+            display: flex;
+            flex-direction: column;
+            gap: 0.3rem;
+        }
+
+        .form-group{
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 1.1rem;
+            width: 100%;
+        }
+
+        label{
+            font-size: 0.9rem;
+            margin-bottom: 0.25rem;
+            opacity: 0.9;
+            font-weight: bold;
+
+        }
+
+        form input[type="text"],
+        form input[type="password"]{
+            width: 100%;
+            background: transparent;
+            color: #fff;
+            
+            outline: none;
+            border: none;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.65);
+            border-radius: 0;
+
+            padding: 0.6rem 0.1rem;
+            font-size: 0.95rem;
+            transition: border-color 0.2s ease, transform 0.1s ease;
+        }
+
+        form input::placeholder{
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.9rem;
+        }
+
+        form input[type="text"]:focus,
+        form input[type="password"]:focus{
+            border-bottom-color: #fff;
+            transform: translateY(-1px);
+        }
+
+        .btn-submit{
+            margin-top: 0.5rem;
+            width: 100%;
+            padding: 0.7rem 1rem;
+
+            border-radius: 999px;
+            border: none;
+            outline: none;
+
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            font-weight: 600;
+            font-size: 0.98rem;
+            letter-spacing: 0.03em;
+            cursor: pointer;
+
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.35);
+            transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+        }
+
+        .btn-submit:hover{
+            background: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.4);
+        }
+
+        .btn-submit:active{
+            transform: translateY(0);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .extra-links{
+            margin-top: 1rem;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            opacity: 0.9;
+        }
+
+        .extra-links a{
+            color: #fff;
+            text-decoration: none;
+            border-bottom: 1px solid transparent;
+            padding-bottom: 1px;
+            transition: border-color 0.15s ease, opacity 0.15s ease;
+        }
+
+        .extra-links a:hover{
+            border-bottom-color: #fff;
+            opacity: 1;
+        }
+
+        @media (max-width: 480px){
+            .inner-container{
+                padding: 1.7rem 1.5rem;
+            }
+
+            .title{
+                font-size: 1.5rem;
+            }
+        }
+        strong{
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="outer-container">
+        <div class="inner-container">
+            <h1 class="title">Welcome Back</h1>
+            <p class="subtitle">Login to continue to your account</p>
+            
+            {% if error %}
+            <p><strong>{{error}}</strong></p>
+            {% endif %}
+
+            <form action="" method="post">
+                <div class="form-group">
+                    <label for="username">Username</label>
+                    <input 
+                        type="text" 
+                        id="username" 
+                        name="username" 
+                        placeholder="Enter your username">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input 
+                        type="password" 
+                        id="password" 
+                        name="password" 
+                        placeholder="Enter your password">
+                </div>
+
+                <button class="btn-submit" type="submit">Login</button>
+
+                <div class="extra-links">
+                    <a href="#">Forgot password?</a>
+                    <a href="#">Create account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

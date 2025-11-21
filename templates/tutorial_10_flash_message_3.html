@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            overflow-x: hidden;
+            color: #fff;
+            background: linear-gradient(315deg, palevioletred, rgb(91, 2, 17), palevioletred);
+            background-size: 400% 400%;
+            animation: background_animation 10s linear infinite;
+        }
+
+        @keyframes background_animation{
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        .container{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+        .p-home{
+            margin: 2em;
+        }
+        .a-home{
+            text-decoration: none;
+            position: relative;
+        }
+        .a-home::after{
+            position: absolute;
+            content: "";
+            left: 0;
+            bottom: 0;
+            height: 0.1em;
+            width: 100%;
+            background-color: blue;
+            transform: scale(0);
+            transition: transform 0.2s ease-in-out;
+        }
+        .a-home:hover::after{
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{message}}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        <p class="p-home"><a href="{{url_for('home')}}" class="a-home">Logout</a></p>
+    </div>
+</body>
+</html>

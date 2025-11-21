@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body{
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            overflow-x: hidden;
+            color: #fff;
+            background: linear-gradient(315deg, palevioletred, rgb(91, 2, 17), palevioletred);
+            background-size: 400% 400%;
+            animation: background_animation 20s linear infinite;
+        }
+
+        @keyframes background_animation{
+            0%   { background-position: 0% 50%; }
+            50%  { background-position: 50% 100%; }
+            100% { background-position: 0% 50%; }
+        }
+        .center-text{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            padding: 2em;
+        }
+        .center-text h1{
+            text-shadow: 0 0 5px wheat;
+            font-size: 3.5em;
+            font-weight: bolder;
+        }
+        .center-text p{
+            margin: 2em;
+        }
+        .login{
+            position: relative;
+            text-decoration: none;
+        }
+        .login::after{
+            content: "";
+            position: absolute;
+            left: 0;
+            bottom:0;
+            height: 2%;
+            width: 100%;
+            background-color: blue;
+            transform: scale(0);
+            transition: transform 0.1s ease-in-out;
+        }
+        .login:hover::after{
+            transform: scale(1);
+        }
+    </style>
+</head>
+<body>
+    <div class="center-text">
+        <h1>Welcome to Flash Message of Flask Tutorial</h1>
+        <p>Click here to <a class="login" href="{{url_for('login')}}">login?</a></p>
+    </div>
+</body>
+</html>
